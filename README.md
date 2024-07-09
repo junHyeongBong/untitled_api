@@ -9,9 +9,12 @@ redis
 socket
 security
 
+
 기능(일단 생각나는대로)
 1) 회원 로그인 , 회원가입
    ㄴ 일반, 소셜(google, naver, kakao)
+   ㄴ 회원등급
+   ㄴ 
 2) 지도 서비스
    ㄴ 카카오 api 이용
 3) 채팅, 메세지
@@ -20,4 +23,6 @@ security
    ㄴ 페이지 or 무한스크롤 (성격에 따라 바뀔예정)
 5) 메일
 6) 캡차! (ddos 방지) 
+7) 엑셀
+8) bucket4j 활용 api 제한 설정
 
