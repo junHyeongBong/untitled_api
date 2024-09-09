@@ -10,9 +10,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class UntitledApiApplicationTests {
 
-    @Autowired
-    private final MemberRepository memberRepository;
+    private MemberRepository memberRepository;
 
+    @Autowired
     public UntitledApiApplicationTests(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
