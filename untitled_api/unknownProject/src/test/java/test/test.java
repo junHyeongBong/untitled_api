@@ -48,7 +48,7 @@ public class test {
     @Test
     public void test123() {
 
-        List<Map<String, Object>> dataList = new ArrayList<>();
+        List<List<String>> dataList = new ArrayList<List<String>>();
 
         try {
             FileInputStream fis = new FileInputStream("/Users/bongjunhyeong/Desktop/무제폴더/기타(파일)/exceltestFiletrans.xlsx");
@@ -65,31 +65,31 @@ public class test {
 
             while(rowIterator.hasNext()){
                 Row row = rowIterator.next();
-                Map<String, Object> rowData = new HashMap<>();
+                List<String> rowData = new ArrayList<>();
                 for(int i=0; i<headers.size(); i++){
                     Cell cell = row.getCell(i);
                     if (cell != null) {
                         switch (cell.getCellType()) {
                             case STRING :
                                 System.out.println(cell.getStringCellValue());
-                                rowData.put("11", cell.getStringCellValue());
+                                rowData.add(cell.getStringCellValue());
                                 break;
                             case NUMERIC :
                                 if(DateUtil.isCellDateFormatted(cell)) {
-                                    rowData.put("22", cell.getDateCellValue());
+                                    rowData.add(String.valueOf(cell.getDateCellValue()));
                                 }else {
-                                    rowData.put("33", cell.getNumericCellValue());
+                                    rowData.add(String.valueOf(cell.getNumericCellValue()));
                                 }
                                 System.out.println(cell.getNumericCellValue());
                                 break;
                             case BOOLEAN:
-                                rowData.put("44", cell.getBooleanCellValue());
+                                rowData.add(String.valueOf(cell.getBooleanCellValue()));
                                 break;
                             default:
-                                rowData.put("55", null);
+                                rowData.add(null);
                         }
                     } else {
-                        rowData.put("66", null);
+                        rowData.add(null);
                     }
                 }
                 dataList.add(rowData);
@@ -103,7 +103,7 @@ public class test {
 
         System.out.println(dataList);
 
-        for(Map<String, Object> data : dataList){
+        for(List<String> data : dataList){
             System.out.println(data);
         }
 
