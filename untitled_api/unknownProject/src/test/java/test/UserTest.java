@@ -8,9 +8,11 @@ import org.test.unknownproject.UnknownProjectApplication;
 import org.test.unknownproject.test.api.repository.UserRepository;
 import org.test.unknownproject.test.entity.User;
 
+import java.util.Optional;
+
 @SpringBootTest(classes = UnknownProjectApplication.class)
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class userTest {
+public class UserTest {
 
     @Autowired
     private UserRepository userRepository;
@@ -23,10 +25,16 @@ public class userTest {
         }
     }
 
-    
+    @Test
+    void jpaFind() {
+        Optional<User> user = userRepository.findById(1L);
+        System.out.println(user.isPresent() ? user.get().toString() : "Nothing");
+    }
 
-
-
+    @Test
+    void jpaDelete() {
+        userRepository.delete(User.builder().name("Hi4").id(5L).build());
+    }
 
 
 }
